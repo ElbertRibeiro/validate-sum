@@ -43,9 +43,9 @@ public class MyServiceTest {
         Set<ConstraintViolation<GenericDTO>> violations = validator.validate(obj);
         assertFalse(violations.isEmpty());
 
-        violations.forEach(violation -> {
+        for (ConstraintViolation<GenericDTO> violation : violations) {
             System.out.println(violation.getMessage());
             assertTrue(violation.getMessage().contains("A soma dos valores não é válida"));
-        });
+        }
     }
 }
