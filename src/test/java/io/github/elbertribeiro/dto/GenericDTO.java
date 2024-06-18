@@ -1,6 +1,6 @@
-package elbertribeiro.com.dto;
+package io.github.elbertribeiro.dto;
 
-import elbertribeiro.com.validatesum.SomaValida;
+import io.github.elbertribeiro.validatesum.SomaValida;
 
 import javax.validation.constraints.NotNull;
 

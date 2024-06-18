@@ -1,6 +1,6 @@
-package elbertribeiro.com.service;
+package io.github.elbertribeiro.service;
 
-import elbertribeiro.com.dto.GenericDTO;
+import io.github.elbertribeiro.dto.GenericDTO;
 import org.junit.Before;
 import org.junit.Test;
 

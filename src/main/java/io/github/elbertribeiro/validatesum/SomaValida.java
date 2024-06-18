@@ -1,4 +1,4 @@
-package elbertribeiro.com.validatesum;
+package io.github.elbertribeiro.validatesum;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
