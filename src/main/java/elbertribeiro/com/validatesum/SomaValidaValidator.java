@@ -36,7 +36,7 @@ public class SomaValidaValidator implements ConstraintValidator<SomaValida, Obje
 
 
             return valor1 != null && valor2 != null && valor1 + valor2 == valor3;
-        } catch (NoSuchFieldException | IllegalAccessException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
