@@ -12,6 +12,23 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
+    <developers>
+        <developer>
+            <id>elbertribeiro</id>
+            <name>Elbert Ribeiro</name>
+            <email>elbertprofissional@gmail.com</email>
+            <url>http://www.example.com/jdoe</url>
+            <roles>
+                <role>architect</role>
+                <role>developer</role>
+            </roles>
+            <timezone>America/New_York</timezone>
+            <properties>
+                <picUrl>http://www.example.com/jdoe/pic</picUrl>
+            </properties>
+        </developer>
+    </developers>
+
     <dependencies>
         <dependency>
             <groupId>org.hibernate.validator</groupId>
