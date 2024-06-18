@@ -28,13 +28,8 @@ public class MyServiceTest {
         GenericDTO obj = new GenericDTO();
         obj.setValor1(10.0);
         obj.setValor2(20.0);
-        obj.setSoma(30.0); // Esta soma é válida
+        obj.setSoma(30.0);
         Set<ConstraintViolation<GenericDTO>> violations = validator.validate(obj);
-        for (ConstraintViolation<GenericDTO> violation : violations) {
-            System.out.println(violation.getMessage());
-        }
-
-        System.out.println(violations.size());
         assertTrue(violations.isEmpty());
     }
 
@@ -43,12 +38,11 @@ public class MyServiceTest {
         GenericDTO obj = new GenericDTO();
         obj.setValor1(10.0);
         obj.setValor2(20.0);
-        obj.setSoma(25.0); // Esta soma é inválida
+        obj.setSoma(25.0);
 
         Set<ConstraintViolation<GenericDTO>> violations = validator.validate(obj);
         assertFalse(violations.isEmpty());
 
-        // Verifica se a mensagem de erro é a esperada
         violations.forEach(violation -> {
             System.out.println(violation.getMessage());
             assertTrue(violation.getMessage().contains("A soma dos valores não é válida"));

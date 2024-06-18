@@ -4,6 +4,7 @@ import elbertribeiro.com.validatesum.SomaValida;
 
 import javax.validation.constraints.NotNull;
 
+@SomaValida(message = "A soma dos valores não é válida", valor1 = "valor1", valor2 = "valor2", soma = "soma")
 public class GenericDTO {
 
     @NotNull
@@ -12,7 +13,6 @@ public class GenericDTO {
     @NotNull
     private Double valor2;
 
-    @SomaValida(message = "A soma dos valores não é válida", valor1 = "valor1", valor2 = "valor2")
     private Double soma;
 
     // Getters e setters
