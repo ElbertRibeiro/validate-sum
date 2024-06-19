@@ -18,6 +18,10 @@ jobs:
           gpg-private-key: ${{ secrets.GPG_SIGNING_KEY }}
           gpg-passphrase: ${{ secrets.GPG_SIGNING_KEY_PASSWORD }}
 
+      - name: Copy settings-security.xml to .m2 directory
+        run: |
+          cp .github/maven/settings-security.xml /home/runner/.m2/
+
       - name: Give execute permissions for Maven Wrapper
         run: chmod +x ./mvnw
 
