@@ -17,6 +17,10 @@ jobs:
           server-password: ${{ secrets.CENTRAL_TOKEN_PASSWORD }}
           gpg-private-key: ${{ secrets.GPG_SIGNING_KEY }}
           gpg-passphrase: ${{ secrets.GPG_SIGNING_KEY_PASSWORD }}
+
+      - name: Give execute permissions for Maven Wrapper
+        run: chmod +x ./mvnw
+
       - name: Set version
         run: ./mvnw versions:set -DnewVersion=${{ github.event.release.tag_name }}
       - name: Publish package
