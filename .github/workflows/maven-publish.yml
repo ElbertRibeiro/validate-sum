@@ -12,7 +12,7 @@ jobs:
         with:
           java-version: '8.0.412+8'
           distribution: 'temurin'
-          server-id: oss.sonatype.org
+          server-id: ossrh
           server-username: ${{ secrets.CENTRAL_TOKEN_USERNAME }}
           server-password: ${{ secrets.CENTRAL_TOKEN_PASSWORD }}
           gpg-private-key: ${{ secrets.GPG_SIGNING_KEY }}
