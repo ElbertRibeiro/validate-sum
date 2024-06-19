@@ -20,7 +20,7 @@ jobs:
 
       - name: Copy settings-security.xml to .m2 directory
         run: |
-          cp .github/maven/settings-security.xml /home/runner/.m2/
+          cp .github/maven/settings.xml /home/runner/.m2/
 
       - name: Give execute permissions for Maven Wrapper
         run: chmod +x ./mvnw
