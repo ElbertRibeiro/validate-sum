@@ -17,15 +17,20 @@ jobs:
           java-version: '8.0.412+8'
           distribution: 'temurin'
           server-id: ossrh
-          server-username: MAVEN_USERNAME
-          server-password: MAVEN_CENTRAL_TOKEN
+          server-username: IoHm+1df
+          server-password: 0C/92WOT1qdbqKh8xIuLWidatHeYiBNGyiIcEwExmZ92
           gpg-private-key: ${{ secrets.GPG_SIGNING_KEY }}
-          gpg-passphrase: MAVEN_GPG_PASSPHRASE
+          gpg-passphrase: Uneven1-Mashed-Matchbook
 
-#      - name: Import GPG key
+      #      - name: Import GPG key
       #        run: |
       #          gpg --batch --import ./.github/key/0x685C7CA7-pub.asc
       #          gpg --batch --import ./.github/key/0x685C7CA7-sec.asc
+
+
+      - name: Import GPG key
+        run: |
+          echo "${{ secrets.GPG_PRIVATE_KEY }}" | gpg --batch --import
 
       - name: Set Version Artefact
         run: mvn versions:set -DnewVersion=${{ github.event.release.tag_name }}
