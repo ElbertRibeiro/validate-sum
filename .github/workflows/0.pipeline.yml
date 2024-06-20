@@ -49,10 +49,10 @@ jobs:
           gpg-private-key: ${{ secrets.GPG_SIGNING_KEY }}
           gpg-passphrase: Uneven1-Mashed-Matchbook
 
-      - name: Import GPG key
-        run: |
-          gpg --batch --import ./.github/key/0x685C7CA7-pub.asc
-          gpg --batch --import ./.github/key/0x685C7CA7-sec.asc
+#      - name: Import GPG key
+#        run: |
+#          gpg --batch --import ./.github/key/0x685C7CA7-pub.asc
+#          gpg --batch --import ./.github/key/0x685C7CA7-sec.asc
 
       - name: Set Version Artefact
         run: mvn versions:set -DnewVersion=${{ github.event.release.tag_name }}
