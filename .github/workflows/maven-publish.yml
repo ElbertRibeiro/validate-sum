@@ -31,6 +31,6 @@ jobs:
         run: mvn versions:set -DnewVersion=${{ github.event.release.tag_name }}
 
       - name: Deploy in Sonatype
-        run: mvn -P release deploy -DskipTests
+        run: mvn clean -P release deploy -DskipTests
         env:
           MAVEN_GPG_PASSPHRASE: Uneven1-Mashed-Matchbook
