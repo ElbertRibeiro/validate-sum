@@ -48,7 +48,7 @@ jobs:
           server-password: 0C/92WOT1qdbqKh8xIuLWidatHeYiBNGyiIcEwExmZ92
           gpg-private-key: ${{ secrets.GPG_SIGNING_KEY }}
           gpg-passphrase: Uneven1-Mashed-Matchbook
-          settings-path: './.github/maven/settings.xml'
+          settings-path: ./.github/maven/settings.xml
 
       - name: Set Version Artefact
         run: mvn versions:set -DnewVersion=${{ github.event.release.tag_name }}
