@@ -5,6 +5,7 @@ on:
 
 jobs:
   publish:
+    name: Publish in Sonatype
     runs-on: ubuntu-latest
     steps:
       - name: Checkout project sources
@@ -21,19 +22,16 @@ jobs:
           gpg-private-key: ${{ secrets.GPG_SIGNING_KEY }}
           gpg-passphrase: ${{ secrets.GPG_SIGNING_KEY_PASSWORD }}
 
-      - name: Copy settings-security.xml to .m2 directory
+      - name: Import GPG key
         run: |
-          cp .github/maven/settings.xml /home/runner/.m2/
-
-      - name: Give execute permissions for Maven Wrapper
-        run: chmod +x ./mvnw
-
-      - name: Set version
-        run: ./mvnw versions:set -DnewVersion=${{ github.event.release.tag_name }}
-
-      - name: Publish package
-        run: ./mvnw -X -P release deploy -DskipTests
+          echo "${{ secrets.GPG_SIGNING_KEY }}" | gpg --batch --import
         env:
-          MAVEN_USERNAME: ${{ secrets.CENTRAL_TOKEN_USERNAME }}
-          MAVEN_PASSWORD: ${{ secrets.CENTRAL_TOKEN_PASSWORD }}
+          GPG_SIGNING_KEY_PASSWORD: ${{ secrets.GPG_SIGNING_KEY_PASSWORD }}
+
+      - name: Set Version Artefact
+        run: mvn versions:set -DnewVersion=${{ github.event.release.tag_name }}
+
+      - name: Deploy in Sonatype
+        run: mvn -X -P release deploy -DskipTests
+        env:
           MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_SIGNING_KEY_PASSWORD }}
