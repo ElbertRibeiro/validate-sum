@@ -17,8 +17,8 @@ jobs:
           java-version: '8.0.412+8'
           distribution: 'temurin'
           server-id: ossrh
-          server-username: ${{ secrets.CENTRAL_TOKEN_USERNAME }}
-          server-password: ${{ secrets.CENTRAL_TOKEN_PASSWORD }}
+          server-username: 1YJpzfRB
+          server-password: FhAUgf+IbrfcEBOqwB92mCe5idcVDiAHda+YPMQfN+q3
           gpg-private-key: ${{ secrets.GPG_SIGNING_KEY }}
           gpg-passphrase: ${{ secrets.GPG_SIGNING_KEY_PASSWORD }}
 
