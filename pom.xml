@@ -109,12 +109,12 @@
                         </executions>
                         <configuration>
                             <gpgArguments>
-                                <arg>--batch</arg>
+<!--                                <arg>&#45;&#45;batch</arg>-->
                                 <arg>--pinentry-mode</arg>
                                 <arg>loopback</arg>
                             </gpgArguments>
-                            <passphrase>Uneven1-Mashed-Matchbook</passphrase>
-                            <keyname>B1ECB3AC685C7CA7</keyname>
+<!--                            <passphrase>Uneven1-Mashed-Matchbook</passphrase>-->
+<!--                            <keyname>B1ECB3AC685C7CA7</keyname>-->
                         </configuration>
                     </plugin>
                 </plugins>
