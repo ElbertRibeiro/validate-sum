@@ -20,6 +20,6 @@ jobs:
           server-password: ${{ secrets.CENTRAL_TOKEN_PASSWORD }}
           gpg-private-key: ${{ secrets.GPG_SIGNING_KEY }}
           gpg-passphrase: ${{ secrets.GPG_SIGNING_KEY_PASSWORD }}
-        run: |
-          mvn versions:set -DnewVersion=${{ github.event.release.tag_name }}
-          mvn -X -P release deploy -DskipTests
+
+      - run: mvn versions:set -DnewVersion=${{ github.event.release.tag_name }}
+      - run: mvn -X -P release deploy -DskipTests
