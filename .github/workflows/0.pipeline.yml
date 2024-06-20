@@ -1,12 +1,39 @@
-name: Publish package to the Maven Central Repository
+name: "Main Pipeline"
 
 on:
-  workflow_call:
+  push:
+    branches: [ "master" ]
 
 jobs:
-  publish:
-    name: Publish in Sonatype
+  test:
+    name: Unit tests
     runs-on: ubuntu-latest
+    steps:
+      - name: Checkout project sources
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v4
+        with:
+          java-version: '8.0.412+8'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Build with Maven
+        run: mvn -B package --file pom.xml
+
+  publish_sonatype:
+    name: Publish artifact (Maven Central)
+    runs-on: ubuntu-latest
+    needs: test
+    if: |
+      (
+        github.event_name != 'workflow_dispatch'
+        || inputs.type == '...no release'
+      ) && ( 
+        github.ref == 'refs/heads/master' 
+        || github.ref_type == 'tag' 
+      )
     steps:
       - name: Checkout project sources
         uses: actions/checkout@v4
