@@ -20,7 +20,7 @@ jobs:
           server-username: IoHm+1df
           server-password: 0C/92WOT1qdbqKh8xIuLWidatHeYiBNGyiIcEwExmZ92
           gpg-private-key: ${{ secrets.GPG_SIGNING_KEY }}
-          gpg-passphrase: ${{ secrets.GPG_SIGNING_KEY_PASSWORD }}
+          gpg-passphrase: Uneven1-Mashed-Matchbook
 
       - name: Import GPG key
         run: |
@@ -33,4 +33,4 @@ jobs:
       - name: Deploy in Sonatype
         run: mvn -P release deploy -DskipTests
         env:
-          MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_SIGNING_KEY_PASSWORD }}
+          MAVEN_GPG_PASSPHRASE: Uneven1-Mashed-Matchbook
