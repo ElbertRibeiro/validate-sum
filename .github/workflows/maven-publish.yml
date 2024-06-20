@@ -22,33 +22,6 @@ jobs:
           gpg-private-key: ${{ secrets.GPG_SIGNING_KEY }}
           gpg-passphrase: ${{ secrets.GPG_SIGNING_KEY_PASSWORD }}
 
-      - name: Generate GPG key
-        run: |
-          cat >gen-key-script <<EOF
-          %echo Generating a basic OpenPGP key
-          Key-Type: default
-          Key-Length: 2048
-          Subkey-Type: default
-          Name-Real: CI/CD
-          Name-Email: cicd@example.com
-          Expire-Date: 1d
-          Passphrase: ${GPG_SIGNING_KEY_PASSWORD}
-          %commit
-          %echo done
-          EOF
-          gpg --batch --generate-key gen-key-script
-
-      - name: Export GPG key
-        run: |
-          GPG_KEY_ID=$(gpg --list-secret-keys --keyid-format LONG | grep 'sec' | awk '{print $2}' | cut -d'/' -f2)
-          gpg --armor --export-secret-keys $GPG_KEY_ID > private-key.asc
-
-      - name: Import GPG key
-        run: |
-          gpg --batch --import private-key.asc
-        env:
-          GPG_SIGNING_KEY_PASSWORD: ${{ secrets.GPG_SIGNING_KEY_PASSWORD }}
-
       - name: Set Version Artefact
         run: mvn versions:set -DnewVersion=${{ github.event.release.tag_name }}
 
