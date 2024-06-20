@@ -43,11 +43,11 @@ jobs:
         with:
           java-version: '8.0.412+8'
           distribution: 'temurin'
-          server-id: MAVEN_ID
-          server-username: MAVEN_USERNAME
-          server-password: MAVEN_CENTRAL_TOKEN
-          gpg-private-key: MAVEN_GPG_PRIVATE_KEY
-          gpg-passphrase: MAVEN_GPG_PASSPHRASE
+          server-id: $MAVEN_ID
+          server-username: $MAVEN_USERNAME
+          server-password: $MAVEN_CENTRAL_TOKEN
+          gpg-private-key: $MAVEN_GPG_PRIVATE_KEY
+          gpg-passphrase: $MAVEN_GPG_PASSPHRASE
 
       - name: Import GPG key
         run: |
