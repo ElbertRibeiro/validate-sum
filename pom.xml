@@ -113,7 +113,7 @@
                                 <arg>--pinentry-mode</arg>
                                 <arg>loopback</arg>
                             </gpgArguments>
-<!--                            <passphrase>Uneven1-Mashed-Matchbook</passphrase>-->
+                            <passphrase>${env.MAVEN_GPG_PASSPHRASE}</passphrase>
 <!--                            <keyname>B1ECB3AC685C7CA7</keyname>-->
                         </configuration>
                     </plugin>
