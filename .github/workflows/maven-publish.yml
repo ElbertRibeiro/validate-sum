@@ -1,12 +1,15 @@
 name: Publish package to the Maven Central Repository
+
 on:
-  release:
-    types: [ created ]
+  workflow_call:
+
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout project sources
+        uses: actions/checkout@v4
+
       - name: Set up Maven Central Repository
         uses: actions/setup-java@v4
         with:
@@ -27,6 +30,7 @@ jobs:
 
       - name: Set version
         run: ./mvnw versions:set -DnewVersion=${{ github.event.release.tag_name }}
+
       - name: Publish package
         run: ./mvnw -X -P release deploy -DskipTests
         env:

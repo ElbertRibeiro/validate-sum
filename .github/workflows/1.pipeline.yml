@@ -7,4 +7,17 @@ on:
 jobs:
   test:
     name: Unit tests
-    uses: ./.github/workflows/test.yml
+    uses: ./.github/workflows/maven-test.yml
+
+  publish_sonatype:
+    name: Publish artifact (Maven Central)
+    uses: ./.github/workflows/maven-publish.yml
+    needs: test
+    if: |
+      (
+        github.event_name != 'workflow_dispatch'
+        || inputs.type == '...no release'
+      ) && ( 
+        github.ref == 'refs/heads/master' 
+        || github.ref_type == 'tag' 
+      )
