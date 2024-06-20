@@ -20,20 +20,6 @@ jobs:
           server-password: ${{ secrets.CENTRAL_TOKEN_PASSWORD }}
           gpg-private-key: ${{ secrets.GPG_SIGNING_KEY }}
           gpg-passphrase: ${{ secrets.GPG_SIGNING_KEY_PASSWORD }}
-
-      - name: Copy settings-security.xml to .m2 directory
         run: |
-          cp .github/maven/settings.xml /home/runner/.m2/
-
-      - name: Give execute permissions for Maven Wrapper
-        run: chmod +x ./mvnw
-
-      - name: Set version
-        run: ./mvnw versions:set -DnewVersion=${{ github.event.release.tag_name }}
-
-      - name: Publish package
-        run: ./mvnw -X -P release deploy -DskipTests
-        env:
-          MAVEN_USERNAME: ${{ secrets.CENTRAL_TOKEN_USERNAME }}
-          MAVEN_PASSWORD: ${{ secrets.CENTRAL_TOKEN_PASSWORD }}
-          MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_SIGNING_KEY_PASSWORD }}
+          mvn versions:set -DnewVersion=${{ github.event.release.tag_name }}
+          mvn -X -P release deploy -DskipTests
