@@ -5,6 +5,7 @@ on:
 
 jobs:
   publish:
+    name: Publish in Sonartype
     runs-on: ubuntu-latest
     steps:
       - name: Checkout project sources
