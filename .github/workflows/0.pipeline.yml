@@ -13,6 +13,7 @@ jobs:
     name: Publish artifact (Maven Central)
     uses: ./.github/workflows/callable.publish-sonatype.yml
     needs: build
+    secrets: inherit
     if: |
       (
         github.event_name != 'workflow_dispatch'
