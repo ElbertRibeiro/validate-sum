@@ -57,8 +57,7 @@ jobs:
         run: mvn versions:set -DnewVersion=${{ github.event.release.tag_name }}
 
       - name: Deploy in Sonatype
-#        run: mvn clean -P release deploy -DskipTests
-        run: mvn clean -P release deploy -DskipTests -Dgpg.passphrase=Uneven1-Mashed-Matchbook
+        run: mvn clean -P release deploy -DskipTests
         env:
           MAVEN_USERNAME: IoHm+1df
           MAVEN_CENTRAL_TOKEN: 0C/92WOT1qdbqKh8xIuLWidatHeYiBNGyiIcEwExmZ92
