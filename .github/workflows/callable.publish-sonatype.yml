@@ -15,11 +15,11 @@ jobs:
         with:
           java-version: '8.0.412+8'
           distribution: 'temurin'
-          server-id: ossrh
-          server-username: IoHm+1df
-          server-password: 0C/92WOT1qdbqKh8xIuLWidatHeYiBNGyiIcEwExmZ92
-          gpg-private-key: ${{ secrets.GPG_SIGNING_KEY }}
-          gpg-passphrase: Uneven1-Mashed-Matchbook
+#          server-id: ossrh
+#          server-username: IoHm+1df
+#          server-password: 0C/92WOT1qdbqKh8xIuLWidatHeYiBNGyiIcEwExmZ92
+#          gpg-private-key: ${{ secrets.GPG_SIGNING_KEY }}
+#          gpg-passphrase: Uneven1-Mashed-Matchbook
 
       - name: Import GPG key
         run: |
