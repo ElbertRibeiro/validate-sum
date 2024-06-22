@@ -21,6 +21,12 @@ jobs:
           gpg-private-key: ${{ secrets.GPG_SIGNING_KEY }}
           gpg-passphrase: Uneven1-Mashed-Matchbook
 
+      - name: Import GPG key
+        run: |
+          echo "${{ secrets.GPG_SIGNING_KEY }}" | gpg --batch --import
+        env:
+          GPG_SIGNING_KEY: ${{ secrets.GPG_SIGNING_KEY }}
+
       - name: Copy xml to .m2 directory
         run: |
           cp .github/maven/settings.xml /home/runner/.m2/
