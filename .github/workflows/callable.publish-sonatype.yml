@@ -16,11 +16,11 @@ jobs:
           java-version: '8.0.412+8'
           distribution: 'temurin'
 
-      - name: Import GPG key
-        run: |
-          echo "${{ secrets.GPG_SIGNING_KEY }}" | gpg --batch --import
-        env:
-          GPG_SIGNING_KEY: ${{ secrets.GPG_SIGNING_KEY }}
+#      - name: Import GPG key
+#        run: |
+#          echo "${{ secrets.GPG_SIGNING_KEY }}" | gpg --batch --import
+#        env:
+#          GPG_SIGNING_KEY: ${{ secrets.GPG_SIGNING_KEY }}
 
       - name: Copy xml to .m2 directory
         run: |
