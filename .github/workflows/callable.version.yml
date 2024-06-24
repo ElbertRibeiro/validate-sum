@@ -25,9 +25,9 @@ jobs:
           EXPECTED_VERSION_REGEX="^1\.[0-9]+\.[0-9]+(-SNAPSHOT)?$"
           
           if [[ "$VERSION" =~ $EXPECTED_VERSION_REGEX ]]; then
-            echo "### :notice: Build completed successfully! :rocket:" >> $GITHUB_STEP_SUMMARY
+            echo "### 🚀 Build completed successfully!" >> $GITHUB_STEP_SUMMARY
             echo "Version $VERSION is valid."
           else
-            echo "Version $VERSION is invalid. Expected pattern: $EXPECTED_VERSION_REGEX"
+            echo "### ❌ Version $VERSION is invalid. Expected pattern: $EXPECTED_VERSION_REGEX" >> $GITHUB_STEP_SUMMARY
             exit 1
           fi
