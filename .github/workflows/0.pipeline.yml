@@ -9,16 +9,16 @@ jobs:
     name: Build + unit tests
     uses: ./.github/workflows/callable.build.yml
 
-  publish_sonatype:
-    name: Publish artifact (Maven Central)
-    uses: ./.github/workflows/callable.publish-sonatype.yml
-    needs: build
-    secrets: inherit
-    if: |
-      (
-        github.event_name != 'workflow_dispatch'
-        || inputs.type == '...no release'
-      ) && ( 
-        github.ref == 'refs/heads/master' 
-        || github.ref_type == 'tag' 
-      )
+#  publish_sonatype:
+#    name: Publish artifact (Maven Central)
+#    uses: ./.github/workflows/callable.publish-sonatype.yml
+#    needs: build
+#    secrets: inherit
+#    if: |
+#      (
+#        github.event_name != 'workflow_dispatch'
+#        || inputs.type == '...no release'
+#      ) && (
+#        github.ref == 'refs/heads/master'
+#        || github.ref_type == 'tag'
+#      )
