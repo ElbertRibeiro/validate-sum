@@ -5,6 +5,10 @@ on:
     branches: [ "master" ]
 
 jobs:
+  version:
+    name: Version Project
+    uses: ./.github/workflows/callable.version.yml
+
   build:
     name: Build + unit tests
     uses: ./.github/workflows/callable.build.yml
