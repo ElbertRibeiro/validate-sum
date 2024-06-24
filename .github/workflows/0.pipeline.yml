@@ -10,6 +10,7 @@ jobs:
     uses: ./.github/workflows/callable.version.yml
 
   build:
+    needs: version
     name: Build + unit tests
     uses: ./.github/workflows/callable.build.yml
 
