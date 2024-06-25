@@ -21,6 +21,12 @@ jobs:
     uses: ./.github/workflows/callable.set-tag.yml
     if: (github.ref == 'refs/heads/master')
 
+  release:
+    needs: build
+    name: Release
+    uses: ./.github/workflows/callable.release.yml
+    if: (github.ref == 'refs/heads/master')
+
 #  publish_sonatype:
 #    name: Publish artifact (Maven Central)
 #    uses: ./.github/workflows/callable.publish-sonatype.yml
