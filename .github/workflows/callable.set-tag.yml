@@ -2,7 +2,8 @@ name: Tag version
 on:
   workflow_call:
 jobs:
-  build:
+  tag:
+    name: Set Tag
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
