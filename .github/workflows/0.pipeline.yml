@@ -2,7 +2,9 @@ name: "Main Pipeline"
 
 on:
   push:
-    branches: [ "master" ]
+    branches:
+    - master
+    - dev
 
 jobs:
   version:
