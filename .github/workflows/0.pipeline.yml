@@ -4,7 +4,6 @@ on:
   push:
     branches:
     - master
-    - dev
 
 jobs:
   version:
@@ -15,6 +14,11 @@ jobs:
     needs: version
     name: Build + unit tests
     uses: ./.github/workflows/callable.build.yml
+
+  tag:
+    needs: build
+    name: Tag Version
+    uses: ./.github/workflows/callable.set-tag.yml
 
 #  publish_sonatype:
 #    name: Publish artifact (Maven Central)
