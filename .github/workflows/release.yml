@@ -1,5 +1,9 @@
 name: Create Release
 on:
+  workflow_run:
+    workflows: [ "Tag version" ]
+    types:
+      - completed
   push:
     tags:
       - '*.*.*'
