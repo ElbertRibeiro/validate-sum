@@ -3,7 +3,7 @@ name: "Main Pipeline"
 on:
   push:
     branches:
-    - master
+      - master
 
 jobs:
   version:
@@ -19,6 +19,7 @@ jobs:
     needs: build
     name: Tag Version
     uses: ./.github/workflows/callable.set-tag.yml
+    if: (github.ref == 'refs/heads/master')
 
 #  publish_sonatype:
 #    name: Publish artifact (Maven Central)
