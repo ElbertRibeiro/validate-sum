@@ -1,0 +1,26 @@
+name: Create Release
+on:
+  workflow_call:
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout project sources
+        uses: actions/checkout@v4
+
+      - name: Fetch tags
+        run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+
+      - name: Get latest tag
+        id: get_tag
+        run: echo ::set-output name=tag::$(git describe --tags $(git rev-list --tags --max-count=1))
+
+      - name: Create Release
+        uses: ncipollo/release-action@v1.14.0
+        with:
+          tag: ${{ steps.get_tag.outputs.tag }}
+          name: Release ${{ steps.get_tag.outputs.tag }}
+          body: |
+            Changelog goes here...
