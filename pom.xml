@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.github.elbertribeiro</groupId>
     <artifactId>validate-sum</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2-SNAPSHOT</version>
     <name>Validate Sum</name>
     <description>Projeto para validação de soma</description>
     <url>http://elbertribeiro.com</url>
