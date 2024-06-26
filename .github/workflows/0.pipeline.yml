@@ -36,6 +36,14 @@ jobs:
     name: Release
     uses: ./.github/workflows/callable.release.yml
 
+  publish_javadoc:
+    needs: build
+    name: Publish javadoc (GitHub Pages)
+    permissions:
+      contents: write
+    uses: ./.github/workflows/callable.publish-javadoc.yml
+    if: (github.ref == 'refs/heads/master')
+
 #  publish_sonatype:
 #    name: Publish artifact (Maven Central)
 #    uses: ./.github/workflows/callable.publish-sonatype.yml
