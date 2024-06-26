@@ -15,8 +15,15 @@ jobs:
     name: Build + unit tests
     uses: ./.github/workflows/callable.build.yml
 
-  tag:
+  publish_sonatype:
     needs: build
+    secrets: inherit
+    name: Publish artifact (Github Packages)
+    uses: ./.github/workflows/callable.publish-gh-pages.yml
+    if: (github.ref == 'refs/heads/master')
+
+  tag:
+    needs: publish_sonatype
     name: Tag Version
     uses: ./.github/workflows/callable.set-tag.yml
     if: (github.ref == 'refs/heads/master')
