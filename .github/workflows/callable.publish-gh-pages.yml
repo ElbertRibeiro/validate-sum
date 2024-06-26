@@ -19,7 +19,7 @@ jobs:
         run: mvn clean install
 
       - name: Publish to GitHub Packages
-        run: mvn -P release deploy
+        run: mvn -P github deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MAVEN_USERNAME: ${{ github.actor }}
