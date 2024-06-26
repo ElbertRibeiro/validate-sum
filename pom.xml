@@ -120,6 +120,9 @@
                 </plugins>
             </build>
         </profile>
+        <profile>
+            <id>github</id>
+        </profile>
     </profiles>
 
     <dependencies>
@@ -165,13 +168,18 @@
     </build>
 
     <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
+<!--        <snapshotRepository>-->
+<!--            <id>ossrh</id>-->
+<!--            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>-->
+<!--        </snapshotRepository>-->
+<!--        <repository>-->
+<!--            <id>ossrh</id>-->
+<!--            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>-->
+<!--        </repository>-->
         <repository>
-            <id>ossrh</id>
-            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+            <id>github</id>
+            <name>GitHub ElbertRibeiro Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/ElbertRibeiro/validate-sum</url>
         </repository>
     </distributionManagement>
 </project>
