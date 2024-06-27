@@ -24,11 +24,11 @@ jobs:
     uses: ./.github/workflows/callable.set-tag.yml
     if: (github.ref == 'refs/heads/master')
 
-  publish_sonatype:
+  publish_github_pkg:
     needs: tag
     secrets: inherit
     name: Publish artifact (Github Packages)
-    uses: ./.github/workflows/callable.publish-gh-pages.yml
+    uses: ./.github/workflows/callable.publish-gh-package.yml
     if: (github.ref == 'refs/heads/master')
 
   release:
