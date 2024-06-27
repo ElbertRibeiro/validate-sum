@@ -52,14 +52,6 @@ jobs:
     needs: build_package_javadoc
     permissions:
       contents: write
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    concurrency:
-      group: "pages"
-      cancel-in-progress: false
     steps:
       - name: Checkout project sources
         uses: actions/checkout@v4
@@ -143,26 +135,14 @@ jobs:
           echo "</body>" >> javadoc/index.html
           echo "</html>" >> javadoc/index.html
 
-#      - name: Commit files
-#        run: |
-#          git config --local user.email "action@github.com"
-#          git config --local user.name "GitHub Action"
-#          git add .
-#          git status
-#          git diff-index --quiet HEAD || git commit -m "chore: updates index.html files incl. javadoc versions"
-#
-#      - name: Push changes
-#        run: |
-#          git push --set-upstream origin gh-pages
+      - name: Commit files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git status
+          git diff-index --quiet HEAD || git commit -m "chore: updates index.html files incl. javadoc versions"
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          # Upload entire repository
-          path: '.'
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-
+      - name: Push changes
+        run: |
+          git push --set-upstream origin gh-pages
