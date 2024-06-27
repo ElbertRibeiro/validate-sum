@@ -19,8 +19,8 @@ jobs:
           java-version: '8.0.412+8'
           distribution: 'temurin'
 
-      - name: Generate javadoc (gradle)
-        run: mvn javadoc
+      - name: Generate javadoc (Maven)
+        run: mvn javadoc:javadoc
 
       - name: Conclude javadoc version and set env
         run: |
@@ -31,14 +31,14 @@ jobs:
           fi
 
       - name: Conclude library name and set env
-        run: echo "LIBRARY_NAME=$(grep -o '^rootProject.name.*' settings.gradle.kts | sed -e 's/rootProject.name.*"\(.*\)"/\1/')" >> $GITHUB_ENV
+        run: echo "LIBRARY_NAME=$(mvn help:evaluate -Dexpression=project.name -q -DforceStdout)" >> $GITHUB_ENV
 
       - name: zip javadoc folder
         env:
           LIBRARY_NAME: ${{ env.LIBRARY_NAME }}
         run: |
-          cd "$LIBRARY_NAME/build/docs/javadoc"
-          zip -r ../../../../javadoc.zip .
+          cd "target/site/apidocs"
+          zip -r ../../../javadoc.zip .
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
