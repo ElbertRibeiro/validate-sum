@@ -51,7 +51,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: build_package_javadoc
     permissions:
-      contents: write
+      contents: read
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -141,17 +143,17 @@ jobs:
           echo "</body>" >> javadoc/index.html
           echo "</html>" >> javadoc/index.html
 
-      - name: Commit files
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add .
-          git status
-          git diff-index --quiet HEAD || git commit -m "chore: updates index.html files incl. javadoc versions"
-
-      - name: Push changes
-        run: |
-          git push --set-upstream origin gh-pages
+#      - name: Commit files
+#        run: |
+#          git config --local user.email "action@github.com"
+#          git config --local user.name "GitHub Action"
+#          git add .
+#          git status
+#          git diff-index --quiet HEAD || git commit -m "chore: updates index.html files incl. javadoc versions"
+#
+#      - name: Push changes
+#        run: |
+#          git push --set-upstream origin gh-pages
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
